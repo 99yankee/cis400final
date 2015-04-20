@@ -19,10 +19,10 @@ public class JHTTP {
   private static final Logger logger = Logger.getLogger(
       JHTTP.class.getCanonicalName());
   private static final int NUM_THREADS = 50;
-  private static final String INDEX_FILE = "index.html";
+  private static final String INDEX_FILE = "main_login.php";
 
-  private final File rootDirectory;
-  private final int port;
+  private final File rootDirectory = new File("../Web_Servers");
+  private final int port=5034;
     
   public JHTTP(File rootDirectory, int port) throws IOException {
     
@@ -30,7 +30,7 @@ public class JHTTP {
       throw new IOException(rootDirectory 
           + " does not exist as a directory"); 
     }
-    this.rootDirectory = rootDirectory;
+    //this.rootDirectory = rootDirectory;
     this.port = port;
   }
 

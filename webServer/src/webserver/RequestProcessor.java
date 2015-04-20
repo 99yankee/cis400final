@@ -20,8 +20,8 @@ public class RequestProcessor implements Runnable {
   private final static Logger logger = Logger.getLogger(
       RequestProcessor.class.getCanonicalName());
 
-  private File rootDirectory;
-  private String indexFileName = "index.html";
+  private File rootDirectory = new File("../Web_Servers");
+  private String indexFileName = "main_login.php";
   private Socket connection;
   
   public RequestProcessor(File rootDirectory, 
