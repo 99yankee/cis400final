@@ -94,7 +94,9 @@ public class RequestProcessor implements Runnable {
           // instead of the writer
           raw.write(theData);
           raw.flush();
-        } else { // can't find the file
+        }
+        
+        else { // can't find the file
           String body = new StringBuilder("<HTML>\r\n")
               .append("<HEAD><TITLE>File Not Found</TITLE>\r\n")
               .append("</HEAD>\r\n")
@@ -108,7 +110,25 @@ public class RequestProcessor implements Runnable {
           out.write(body);
           out.flush();
         }
-      } else { // method does not equal "GET"
+      }
+      else if(method.equals("HEAD")) {
+          String body = new StringBuilder("<HTML>\r\n")
+              .append("<HEAD><TITLE>Title</TITLE>\r\n")
+              .append("</HEAD>\r\n")
+              .append("<BODY>")
+              .append("<H1>Header</H1>\r\n")
+              .append("")
+              .append("</BODY></HTML>\r\n").toString();
+          
+          if (version.startsWith("HTTP/")) { // send a MIME header
+            sendHeader(out, "HTTP/1.0 404 File Not Found", 
+                "text/html; charset=utf-8", body.length());
+          } 
+          out.write(body);
+          out.flush();
+                
+        }
+      else { // method does not equal "GET"
         String body = new StringBuilder("<HTML>\r\n")
             .append("<HEAD><TITLE>Not Implemented</TITLE>\r\n")
             .append("</HEAD>\r\n")
