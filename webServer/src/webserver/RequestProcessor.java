@@ -108,7 +108,8 @@ public class RequestProcessor implements Runnable {
           out.write(body);
           out.flush();
         }
-      } else { // method does not equal "GET"
+      }
+      else { // method does not equal "GET"
         String body = new StringBuilder("<HTML>\r\n")
             .append("<HEAD><TITLE>Not Implemented</TITLE>\r\n")
             .append("</HEAD>\r\n")
