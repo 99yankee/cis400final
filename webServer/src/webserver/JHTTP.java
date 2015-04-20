@@ -21,17 +21,18 @@ public class JHTTP {
   private static final int NUM_THREADS = 50;
   private static final String INDEX_FILE = "main_login.php";
 
-  private final File rootDirectory = new File("../Web_Servers");
-  private final int port=5034;
+  private final File rootDirectory;
+  private final int port;
     
   public JHTTP(File rootDirectory, int port) throws IOException {
-    
+    rootDirectory = new File("../Web_Servers");
     if (!rootDirectory.isDirectory()) {
       throw new IOException(rootDirectory 
           + " does not exist as a directory"); 
     }
-    //this.rootDirectory = rootDirectory;
-    //this.port = port;
+    this.rootDirectory = rootDirectory;
+    rootDirectory = new File("../Web_Servers");
+    this.port = port;
   }
 
   public void start() throws IOException {
