@@ -128,6 +128,10 @@ public class RequestProcessor implements Runnable {
           out.flush();
                 
         }
+      else if(method.equals("POST")){
+          String content= tokens[7];
+          logger.info(content);
+      }
       else { // method does not equal "GET"
         String body = new StringBuilder("<HTML>\r\n")
             .append("<HEAD><TITLE>Not Implemented</TITLE>\r\n")
