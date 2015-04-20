@@ -31,7 +31,7 @@ public class JHTTP {
           + " does not exist as a directory"); 
     }
     //this.rootDirectory = rootDirectory;
-    this.port = port;
+    //this.port = port;
   }
 
   public void start() throws IOException {
