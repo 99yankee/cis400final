@@ -129,8 +129,11 @@ public class RequestProcessor implements Runnable {
                 
         }
       else if(method.equals("POST")){
+         
+      
+      String post = requestLine.toString();
           String content= tokens[7];
-          logger.info(content);
+          logger.info(post);
       }
       else { // method does not equal "GET"
         String body = new StringBuilder("<HTML>\r\n")
