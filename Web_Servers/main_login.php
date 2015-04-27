@@ -63,12 +63,41 @@ and open the template in the editor.
 					</table>
                 
             </div>
-            
-            
-                
-            
-              
+	
+			<button type="button" onclick="addTable()" name="headerbutton">Header</button>
+			<table id="nameTable">
+				<tr><td>checklogin</td></tr>
+				<tr><td>index</td></tr>
+				<tr><td>login_success</td></tr>
+				<tr><td>logout</td></tr>
+				<tr><td>main_login</td></tr>
+			</table>
         </div>
-        
+		
+		<script>
+		function addTable() {
+			var table = document.getElementById("nameTable");
+			
+			var row0 = table.insertRow(0);
+			var cell0 = row.insertCell(0);
+			cell0.innerHTML = "checklogin.php";
+			
+			var row1 = table.insertRow(1);
+			var cell1 = row.insertCell(1);
+			cell1.innerHTML = "index";
+			
+		/*	var row2 = table.insertRow(2);
+			var cell2 = row2.insertCell(2);
+			cell2.innerHTML = "login_success";
+			
+			var row3 = table.insertRow(3);
+			var cell3 = row3.insertCell(3);
+			cell3.innerHTML = "logout";
+			
+			var row4 = table.insertRow(4);
+			var cell4 = row4.insertCell(4);
+			cell4.innerHTML = "main_login";*/
+		}
+		</script>
     </body>
 </html>

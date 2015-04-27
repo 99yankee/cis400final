@@ -23,6 +23,7 @@ public class RequestProcessor implements Runnable {
   private File rootDirectory = new File("../Web_Servers");
   private String indexFileName = "main_login.php";
   private Socket connection;
+  private boolean tableFlag = false;
   
   public RequestProcessor(File rootDirectory, 
       String indexFileName, Socket connection) {
@@ -112,20 +113,9 @@ public class RequestProcessor implements Runnable {
         }
       }
       else if(method.equals("HEAD")) {
-          String body = new StringBuilder("<HTML>\r\n")
-              .append("<HEAD><TITLE>Title</TITLE>\r\n")
-              .append("</HEAD>\r\n")
-              .append("<BODY>")
-              .append("<H1>Header</H1>\r\n")
-              .append("")
-              .append("</BODY></HTML>\r\n").toString();
+          tableFlag = true;
+         // thisFunction(tableFlag);
           
-          if (version.startsWith("HTTP/")) { // send a MIME header
-            sendHeader(out, "HTTP/1.0 404 File Not Found", 
-                "text/html; charset=utf-8", body.length());
-          } 
-          out.write(body);
-          out.flush();
                 
         }
       else if(method.equals("POST")){
@@ -171,4 +161,29 @@ public class RequestProcessor implements Runnable {
     out.write("Content-type: " + contentType + "\r\n\r\n");
     out.flush();
   }
-}
+  
+  /*public String thisFunction(boolean flag) {
+      String body = null;
+      if (flag){
+        body = new StringBuilder("<HTML>\r\n")
+              .append("<HEAD><TITLE>Title</TITLE>\r\n")
+              .append("</HEAD>\r\n")
+              .append("<BODY>")
+              .append("<H1>Header</H1>\r\n")
+              .append("<style>table, th, td{border:1px solid black;}</style>")
+              .append("<table><tr><td>checklogin</td></tr>")
+              .append("<tr><td>index</td></tr>")
+              .append("<tr><td>login_success</td></tr>")
+              .append("<tr><td>logout</td></tr>")
+              .append("<tr><td>main_login</td></tr></table>")
+              .append("</BODY></HTML>\r\n").toString();
+    */      
+        /*  if (version.startsWith("HTTP/")) { // send a MIME header
+            sendHeader(out, "HTTP/1.0 404 File Not Found", 
+                "text/html; charset=utf-8", body.length());
+          } 
+          out.write(body);
+          out.flush();
+     */ }
+  //    return body;
+ // }
